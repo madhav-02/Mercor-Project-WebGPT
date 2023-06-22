@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f36265 0%, #961276 100%);
+    margin: 0;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    color: #fff;
+    font-family: 'Pacifico', cursive;
+    font-size: 36px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  #result {
+    width: 400px;
+    max-height: 400px;
+    border: 2px solid #ccc;
+    padding: 10px;
+    overflow-y: auto;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  #result p {
+    font-weight: bold;
+    font-style: italic;
+    color: #333;
+  }
+
+  #result.empty::before {
+    content: 'Tell something...';
+    color: #aaa;
+    font-style: italic;
+  }
+
+  #result:not(.empty)::before {
+    content: '';
+  }
