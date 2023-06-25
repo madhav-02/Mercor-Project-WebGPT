@@ -3,20 +3,19 @@ recognition.lang = 'en-US';
 const resultDiv = document.getElementById('result');
 const speechButton = document.getElementById('speechButton');
 recognition.continuous = true; // Enable continuous recognition
-
+resultText=""
 speechButton.addEventListener('click', handleButtonClick);
 function handleButtonClick() {
-  const text = resultDiv.textContent;
-  voiceOver(text);
+  voiceOver(resultText);
 }
 recognition.onresult = function(event) {
     const transcript = event.results[event.results.length - 1][0].transcript;
     resultDiv.innerHTML = '<p>' + transcript + '</p>';
-    resultDiv.classList.remove('empty'); // Remove the 'empty' class
-    processCommand(transcript); // Call a function to process the command
+    resultDiv.classList.remove('empty');
+    processCommand(transcript); 
 };
 
-recognition.start(); // Start the speech recognition
+recognition.start(); 
 convertButton = document.getElementById('click');
 
 window.addEventListener('beforeunload', cancelSpeech);
@@ -27,7 +26,7 @@ function cancelSpeech() {
 }
 
 const voiceOver = (command) => {
-  resultDiv.textContent = result['aiResponse'];
+  resultDiv.textContent = command;
   if ('speechSynthesis' in window) {
     //console.log(speechSynthesis.getVoices());
     const speechUtterance = new SpeechSynthesisUtterance();
@@ -63,7 +62,7 @@ async function processCommand(command) {
     }
     const result = await response.json();
     console.log("Result was : ",result['aiResponse']);
-    voiceOver(result.aiResponse);
+    resultText = result['aiResponse']
   }catch(err){
     console.log("Error : ",err);
   }
