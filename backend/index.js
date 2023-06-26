@@ -16,6 +16,6 @@ app.get('/', (req, res) => {
     res.send("Welcome to home page");
 })
 
-app.listen(process.env.PORT_NO, () => {
+app.listen(process.env.PORT_NO || 8000, () => {
     console.log("Application started on PORT-",process.env.PORT_NO);
 })
