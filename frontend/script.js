@@ -45,7 +45,7 @@ speechSynthesis.speak(speechUtterance);
 }
 async function processCommand(command) {
   console.log('USER spoke: ', command);    
-  const url = 'http://localhost:8000/api/v1/openai';
+  const url = 'https://voicebased-chatgpt.onrender.com/api/v1/openai';
   const data = {
     prompt: command
   };
